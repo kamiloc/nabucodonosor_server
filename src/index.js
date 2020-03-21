@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   })
 });
 
-app.use('/graphql', graphqlHTTP({
+app.use('/.netlify/functions/graphql', graphqlHTTP({
   graphiql: true,
   schema: schema,
   context: {
