@@ -2,9 +2,9 @@
   "name": "nabucodonosor_server",
   "version": "1.0.0",
   "description": "Nabucodonosor Sever with Graphql, Express and MongoDb",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "netlify-lambda build src",
+    "build": "babel src -d dist --source-maps",
     "start": "nodemon src/index.js --exec babel-node",
     "serve": "node dist/index.js",
     "clean": "rimraf dist"
@@ -18,9 +18,7 @@
     "graphql-tools": "^4.0.7",
     "graphql-type-datetime": "^0.2.4",
     "mongoose": "^5.9.5",
-    "netlify-lambda": "^1.6.3",
-    "rimraf": "^3.0.2",
-    "serverless-http": "^2.3.2"
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

@@ -1,6 +1,5 @@
 import express from "express";
 import graphqlHTTP from "express-graphql";
-import serverless from "serverless-http";
 import schema from "./schema";
 import { connect } from "./database";
 
@@ -15,7 +14,7 @@ app.get('/', (req, res) => {
   })
 });
 
-app.use('/.netlify/functions/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
   graphiql: true,
   schema: schema,
   context: {
@@ -23,7 +22,4 @@ app.use('/.netlify/functions/graphql', graphqlHTTP({
   }
 }));
 
-app.listen(3000, () => console.log('Server on port 3000'));
-
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(8080, () => console.log('Server on port 3000'));
