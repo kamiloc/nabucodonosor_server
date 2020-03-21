@@ -2,6 +2,8 @@ import express from "express";
 import graphqlHTTP from "express-graphql";
 import schema from "./schema";
 import { connect } from "./database";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 const app = express();
 connect();
@@ -22,4 +24,4 @@ app.use('/graphql', graphqlHTTP({
   }
 }));
 
-app.listen(8080, () => console.log('Server on port 3000'));
+app.listen(3000, () => console.log('Server on port 3000'));
