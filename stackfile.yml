@@ -1,6 +1,21 @@
 version: "3.7"
 services:
-    nabuconodosor:
-        image: kamiloc/nabucodonosor
+    nabucodonosor:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        networks: nabucodonosor-network
         ports:
             - 9000:8000
+        deploy:
+            placement:
+                constraints:
+                    - "node.role==manager"
+            replicas: 4
+            update_config:
+                parallelism: 2
+                restart_policy:
+                    condition: on-failure
+networks:
+    nabucodonosor-network:
+        driver: overlay
