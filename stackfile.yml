@@ -13,8 +13,8 @@ services:
       replicas: 4
       update_config:
         parallelism: 2
-  nabucodonosor-rigth:
-    image: kamiloc/nabucodonosor:rigth
+  nabucodonosor-right:
+    image: kamiloc/nabucodonosor:right
     networks:
       - nabucodonosor-network
     ports:
