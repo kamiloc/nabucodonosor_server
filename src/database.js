@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import {MONGODB_URLS} from "./config";
 
 export async function connect() {
   try {
-    await mongoose.connect('mongodb+srv://nabucodonosor:nDnSbFD4XwkYuWs@cluster0-vvcsq.azure.mongodb.net/test?retryWrites=true&w=majority', {
+    await mongoose.connect(MONGODB_URLS[0], {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
