@@ -1,22 +1,57 @@
 version: "3.7"
 services:
-    nabucodonosor:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        networks:
-            - nabucodonosor-network
-        ports:
-            - 9000:8000
-        deploy:
-            placement:
-                constraints:
-                    - "node.role==manager"
-            replicas: 4
-            update_config:
-                parallelism: 2
-                restart_policy:
-                    condition: on-failure
+  nabucodonosor-up:
+    image: kamiloc/nabucodonosor:up
+    networks:
+      - nabucodonosor-network
+    ports:
+      - 9000:8000
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+      replicas: 4
+      update_config:
+        parallelism: 2
+  nabucodonosor-rigth:
+    image: kamiloc/nabucodonosor:rigth
+    networks:
+      - nabucodonosor-network
+    ports:
+      - 9001:8000
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+      replicas: 4
+      update_config:
+        parallelism: 2
+  nabucodonosor-down:
+    image: kamiloc/nabucodonosor:down
+    networks:
+      - nabucodonosor-network
+    ports:
+      - 9002:8000
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+      replicas: 4
+      update_config:
+        parallelism: 2
+  nabucodonosor-left:
+    image: kamiloc/nabucodonosor:left
+    networks:
+      - nabucodonosor-network
+    ports:
+      - 9003:8000
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+      replicas: 4
+      update_config:
+        parallelism: 2
 networks:
-    nabucodonosor-network:
-        driver: overlay
+  nabucodonosor-network:
+    driver: overlay
