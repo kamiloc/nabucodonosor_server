@@ -4,7 +4,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        networks: nabucodonosor-network
+        networks:
+            - nabucodonosor-network
         ports:
             - 9000:8000
         deploy:
