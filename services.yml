@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nabucodonosor
+spec:
+  type: LoadBalancer
+  selector:
+    app: nabucodonosor
+  ports:
+    - name: "nabucodonosor-up"
+      port: 8000
+      targetPort: 8000
+    - name: "nabucodonosor-down"
+      port: 8001
+      targetPort: 8001
+    - name: "nabucodonosor-left"
+      port: 8002
+      targetPort: 8002
+    - name: "nabucodonosor-rigth"
+      port: 8003
+      targetPort: 8003

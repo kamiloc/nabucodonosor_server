@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nabucodonosor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nabucodonosor
+  template:
+    metadata:
+      labels:
+        app: nabucodonosor
+    spec:
+      containers:
+        - name: nabucodonosor-up
+          image: gcr.io/poli-projects-240101/nabucodonosor:up
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PORT
+              value: "8000"
+            - name: MOVE_INDEX
+              value: "0"
+        - name: nabucodonosor-down
+          image: gcr.io/poli-projects-240101/nabucodonosor:down
+          ports:
+            - containerPort: 8001
+          env:
+            - name: PORT
+              value: "8001"
+            - name: MOVE_INDEX
+              value: "1"
+        - name: nabucodonosor-left
+          image: gcr.io/poli-projects-240101/nabucodonosor:left
+          ports:
+            - containerPort: 8002
+          env:
+            - name: PORT
+              value: "8002"
+            - name: MOVE_INDEX
+              value: "2"
+        - name: nabucodonosor-right
+          image: gcr.io/poli-projects-240101/nabucodonosor:right
+          ports:
+            - containerPort: 8003
+          env:
+            - name: PORT
+              value: "8003"
+            - name: MOVE_INDEX
+              value: "3"

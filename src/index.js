@@ -5,23 +5,27 @@ import { connect } from "./database";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+const PORT = process.env.PORT || 8000;
 const app = express();
 connect();
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.json({
-    api: 'Nabucodonosor API GraphQL',
-    version: '1.0',
-    status: 'working'
-  })
+    api: "Nabucodonosor API GraphQL",
+    version: "1.0",
+    status: "working"
+  });
 });
 
-app.use('/graphql', graphqlHTTP({
-  graphiql: true,
-  schema: schema,
-  context: {
-    messageId: 'test'
-  }
-}));
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    graphiql: true,
+    schema: schema,
+    context: {
+      messageId: "up"
+    }
+  })
+);
 
-app.listen(3000, () => console.log('Server on port 3000'));
+app.listen(PORT, () => console.log("Server on port " + PORT));
