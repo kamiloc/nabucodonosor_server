@@ -18,6 +18,7 @@
     "graphql-tools": "^4.0.7",
     "graphql-type-datetime": "^0.2.4",
     "mongoose": "^5.9.5",
+    "mqtt": "^4.0.1",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {

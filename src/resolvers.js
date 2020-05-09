@@ -1,4 +1,3 @@
-import { tasks } from "./sample";
 import Movement from "./models/movement";
 import GraphQLDateTime from "graphql-type-datetime";
 
