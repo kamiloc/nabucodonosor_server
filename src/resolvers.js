@@ -19,10 +19,7 @@ export const resolvers = {
 
       mqttClient.on("connect", () => {
         console.log(">>> Mqtt connected succefull");
-      });
 
-      if (!mqttClient.connected) res.status(500).send("Mqtt client isn't connected");
-      else {
         mqttClient.publish("move", MOVE_MAP[process.env.MOVE_INDEX || 0], (err) => {
           if (err) {
             console.log(">>> Error on publish topic");
@@ -30,8 +27,10 @@ export const resolvers = {
           } else {
             console.log(">>> Message published");
           }
+
+          mqttClient.end();
         });
-      }
+      });
 
       await newMovement.save();
       return newMovement;
